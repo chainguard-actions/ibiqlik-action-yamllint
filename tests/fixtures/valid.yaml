@@ -1,0 +1,7 @@
+---
+name: example
+description: A valid YAML file for testing
+values:
+  - one
+  - two
+  - three
