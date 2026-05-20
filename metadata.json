@@ -1,7 +1,0 @@
-{
-  "owner": "ibiqlik",
-  "name": "action-yamllint",
-  "visibility": "public",
-  "description": "Validate YAML syntax",
-  "block_publish": false
-}
