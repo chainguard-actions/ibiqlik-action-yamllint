@@ -8,9 +8,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/ibiqlik--action-yamllint/tree/v3.0.2) | — |
-| v3.1.0 | [`v3.1.0`](https://github.com/chainguard-actions/ibiqlik--action-yamllint/tree/v3.1.0) | — |
-| v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/ibiqlik--action-yamllint/tree/v3.1.1) | — |
+| v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.0.2) | — |
+| v3.1.0 | [`v3.1.0`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.0) | — |
+| v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.1) | — |
 
 ## Privacy
 
