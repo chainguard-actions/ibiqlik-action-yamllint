@@ -10,7 +10,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 |---------|-----|-----------------|
 | v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.0.2) | — |
 | v3.1.0 | [`v3.1.0`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.0) | — |
-| v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.1) | — |
+| v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.1) | [`2576378`](https://github.com/ibiqlik/action-yamllint/commit/2576378a8e339169678f9939646ee3ee325e845c) |
 
 ## Privacy
 
