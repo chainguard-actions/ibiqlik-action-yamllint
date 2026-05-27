@@ -14,7 +14,7 @@ Action **ibiqlik--action-yamllint/v3.1.1** was hardened automatically. 1 finding
 
 ### script-injection (severity: high)
 
-In action.yml, the `run:` block directly interpolates the GitHub Actions expression `${{ github.action_path }}` into the shell command string (used as `${{ github.action_path }}/entrypoint.sh`). This is a `github.*` context value embedded directly in a `run:` block rather than being assigned to an environment variable first and referenced as `$ENV_VAR`. The correct pattern would be to set `ACTION_PATH: ${{ github.action_path }}` in the `env:` block and then use `"$ACTION_PATH/entrypoint.sh"` in the run script.
+In action.yml, the expression `${{ github.action_path }}` is interpolated directly inside a `run:` shell command block rather than being assigned to an environment variable first. Although `github.action_path` is not directly attacker-controlled, it is a `github.*` context expression used inline in a shell command, violating the safe pattern of routing context values through `env:` variables. The run block executes: `${{ github.action_path }}/entrypoint.sh`.
 
 Locations:
 
@@ -28,5 +28,5 @@ Locations:
 
 **Notes:**
 
-Fixed script-injection in action.yml at line 36. Moved `${{ github.action_path }}` out of the `run:` block into the `env:` block as `ACTION_PATH: ${{ github.action_path }}`, and updated the shell command from `${{ github.action_path }}/entrypoint.sh` to `"$ACTION_PATH/entrypoint.sh"`. This follows the correct pattern of assigning GitHub context expressions to environment variables and referencing them as plain shell variables.
+Fixed script injection in action.yml at line 36: moved `${{ github.action_path }}` out of the `run:` shell block and into the `env:` block as `ACTION_PATH: ${{ github.action_path }}`. The shell command now uses `"$ACTION_PATH/entrypoint.sh"` instead of `${{ github.action_path }}/entrypoint.sh`, following the safe pattern of routing GitHub context expressions through environment variables.
 

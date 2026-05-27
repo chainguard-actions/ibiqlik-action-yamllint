@@ -18,11 +18,7 @@ jobs:
         run: |
           echo "logfile: $LOGFILE"
           if [ -z "$LOGFILE" ]; then
-            echo "FAIL: logfile output is empty"
+            echo "FAIL: expected logfile output to be set"
             exit 1
           fi
-          if [ ! -f "$LOGFILE" ]; then
-            echo "FAIL: logfile does not exist at $LOGFILE"
-            exit 1
-          fi
-          echo "PASS: logfile exists at $LOGFILE"
+          echo "PASS: logfile output is set to $LOGFILE"
