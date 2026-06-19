@@ -1,0 +1,1 @@
+# ibiqlik-action-yamllint
