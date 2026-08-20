@@ -9,7 +9,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
 | v3 | [`v3`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3) | [`2576378`](https://github.com/ibiqlik/action-yamllint/commit/2576378a8e339169678f9939646ee3ee325e845c) |
-| v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.0.2) | — |
+| v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.0.2) | [`c19bd05`](https://github.com/ibiqlik/action-yamllint/commit/c19bd0523a9011c3a3960fe6640a0882b59af15d) |
 | v3.1 | [`v3.1`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1) | [`2576378`](https://github.com/ibiqlik/action-yamllint/commit/2576378a8e339169678f9939646ee3ee325e845c) |
 | v3.1.0 | [`v3.1.0`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.0) | — |
 | v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/ibiqlik-action-yamllint/tree/v3.1.1) | [`2576378`](https://github.com/ibiqlik/action-yamllint/commit/2576378a8e339169678f9939646ee3ee325e845c) |
