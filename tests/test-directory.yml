@@ -1,0 +1,40 @@
+name: Test directory linting
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install yamllint
+        run: pip install 'yamllint>=1.25.0'
+
+      - id: action
+        uses: .
+        with:
+          file_or_dir: tests/fixtures/dir
+          config_data: |
+            extends: default
+            rules:
+              line-length: disable
+              new-line-at-end-of-file: disable
+              trailing-spaces: disable
+          format: parsable
+
+      - name: Assert action succeeded for directory
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          LOGFILE: ${{ steps.action.outputs.logfile }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "logfile: $LOGFILE"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected action to succeed for directory linting, but got '$OUTCOME'"
+            exit 1
+          fi
+          if [ -z "$LOGFILE" ]; then
+            echo "FAIL: logfile output is empty"
+            exit 1
+          fi
+          echo "PASS: directory linting succeeded, logfile at '$LOGFILE'"

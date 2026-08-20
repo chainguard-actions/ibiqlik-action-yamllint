@@ -1,0 +1,3 @@
+key: value
+  bad_indent: this is wrong
+key: duplicate

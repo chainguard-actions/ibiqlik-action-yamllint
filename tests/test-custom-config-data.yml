@@ -1,4 +1,4 @@
-name: Test custom config_file
+name: Test custom config_data
 on:
   workflow_dispatch:
 jobs:
@@ -13,11 +13,16 @@ jobs:
       - id: action
         uses: .
         with:
-          file_or_dir: tests/fixtures/nodocstart.yaml
-          config_file: tests/fixtures/.yamllint-permissive
+          file_or_dir: tests/fixtures/longline.yaml
+          config_data: |
+            extends: default
+            rules:
+              line-length: disable
+              new-line-at-end-of-file: disable
+              trailing-spaces: disable
           format: parsable
 
-      - name: Assert action succeeded with custom config file
+      - name: Assert action succeeded with relaxed config
         env:
           OUTCOME: ${{ steps.action.outcome }}
           LOGFILE: ${{ steps.action.outputs.logfile }}
@@ -25,7 +30,7 @@ jobs:
           echo "outcome: $OUTCOME"
           echo "logfile: $LOGFILE"
           if [ "$OUTCOME" != "success" ]; then
-            echo "FAIL: expected action to succeed with custom config_file, but got '$OUTCOME'"
+            echo "FAIL: expected action to succeed with relaxed config, but got '$OUTCOME'"
             exit 1
           fi
-          echo "PASS: action succeeded using custom config_file"
+          echo "PASS: action succeeded with custom config_data"

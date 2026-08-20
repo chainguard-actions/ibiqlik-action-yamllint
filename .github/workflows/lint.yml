@@ -1,0 +1,61 @@
+name: Test Action
+on: pull_request
+permissions: {}
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2
+
+      - name: Get yamllint version
+        run: yamllint --version
+
+      - id: lint-with-config
+        name: lint with config
+        uses: ./
+        with:
+          file_or_dir: test
+          config_data: |
+            extends: default
+            ignore: nok.yaml
+            rules:
+              new-line-at-end-of-file:
+                level: warning
+              trailing-spaces:
+                level: warning
+
+      - id: lint-all-no-warnings
+        name: lint all - no warnings (continue on error)
+        continue-on-error: true
+        uses: ./
+        with:
+          file_or_dir: test
+          strict: true
+          no_warnings: true
+
+      - id: lint-all-continue
+        name: lint all (continue on error)
+        continue-on-error: true
+        uses: ./
+        with:
+          file_or_dir: test
+          strict: true
+          format: standard
+
+      - id: default-lint-all
+        name: default lint all (continue on error)
+        continue-on-error: true
+        uses: ./
+
+      - id: print-output
+        if: always()
+        name: Print output
+        env:
+          LOGFILE_WITH_CONFIG: ${{ steps.lint-with-config.outputs.logfile }}
+          LOGFILE_ALL_CONTINUE: ${{ steps.lint-all-continue.outputs.logfile }}
+        run: |
+          echo "$LOGFILE_WITH_CONFIG"
+          cat "$LOGFILE_WITH_CONFIG"
+
+          echo "$LOGFILE_ALL_CONTINUE"
+          cat "$LOGFILE_ALL_CONTINUE"

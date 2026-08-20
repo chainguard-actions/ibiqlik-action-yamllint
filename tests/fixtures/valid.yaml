@@ -1,7 +1,6 @@
 ---
 name: example
-description: A valid YAML file for testing
-values:
-  - one
-  - two
-  - three
+version: "1.0.0"
+items:
+  - foo
+  - bar
