@@ -1,0 +1,5 @@
+---
+name: example
+  bad_indent: this is wrong
+key: value
+  another_bad: indentation

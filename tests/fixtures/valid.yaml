@@ -1,6 +1,9 @@
 ---
 name: example
-version: "1.0"
-items:
-  - foo
-  - bar
+version: "1.0.0"
+settings:
+  enabled: true
+  count: 42
+  tags:
+    - foo
+    - bar

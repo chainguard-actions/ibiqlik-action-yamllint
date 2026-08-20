@@ -1,4 +1,4 @@
-name: Test config_file - custom configuration file
+name: Test no_warnings mode - suppress warnings
 on:
   workflow_dispatch:
 jobs:
@@ -12,9 +12,9 @@ jobs:
         uses: .
         with:
           file_or_dir: tests/fixtures/with-warnings.yaml
-          config_file: tests/fixtures/custom-yamllint-config.yaml
+          no_warnings: "true"
           format: parsable
-      - name: Assert action succeeded with config_file
+      - name: Assert action succeeded with no_warnings mode
         env:
           OUTCOME: ${{ steps.action.outcome }}
           LOGFILE: ${{ steps.action.outputs.logfile }}
@@ -22,11 +22,11 @@ jobs:
           echo "outcome: $OUTCOME"
           echo "logfile: $LOGFILE"
           if [ "$OUTCOME" != "success" ]; then
-            echo "FAIL: expected action to succeed with custom config_file, but got: $OUTCOME"
+            echo "FAIL: expected action to succeed with no_warnings=true, but got: $OUTCOME"
             exit 1
           fi
           if [ -z "$LOGFILE" ]; then
             echo "FAIL: logfile output is empty"
             exit 1
           fi
-          echo "PASS: action succeeded with config_file"
+          echo "PASS: action succeeded with no_warnings mode"
