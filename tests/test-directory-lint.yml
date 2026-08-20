@@ -1,0 +1,24 @@
+name: Test linting a directory of YAML files
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install yamllint
+        run: pip install 'yamllint>=1.25.0'
+
+      - id: action
+        uses: .
+        with:
+          file_or_dir: tests/fixtures/dir-lint
+          config_data: |
+            extends: default
+            rules:
+              line-length: disable
+
+      - name: Assert directory linting passed
+        run: |
+          echo "PASS: yamllint succeeded on directory of valid YAML files"

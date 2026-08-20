@@ -1,4 +1,4 @@
-name: Test config_file input
+name: Test config_file input with custom configuration file
 on:
   workflow_dispatch:
 jobs:
@@ -6,13 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Run yamllint with custom config file
-        id: action
+
+      - name: Install yamllint
+        run: pip install 'yamllint>=1.25.0'
+
+      - id: action
         uses: .
         with:
-          file_or_dir: actions/hardened/ibiqlik--action-yamllint/v3.0.2/tests/fixtures/valid.yaml
-          config_file: actions/hardened/ibiqlik--action-yamllint/v3.0.2/tests/fixtures/yamllint-config.yml
-          format: parsable
-      - name: Assert lint passed with custom config
+          file_or_dir: tests/fixtures/config-file/target.yaml
+          config_file: tests/fixtures/config-file/.yamllint
+
+      - name: Assert linting with config file passed
         run: |
-          echo "PASS: yamllint completed successfully with custom config_file"
+          echo "PASS: yamllint succeeded using custom config file"
